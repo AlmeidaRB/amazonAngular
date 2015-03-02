@@ -1,0 +1,16 @@
+
+  <ul>
+    <li ng-repeat="board in mainCtrl.snowboards">
+      <a href=""><img ng-src="{{ board.photo}}" alt=""></a>
+      <p>Brand: {{board.board}} - Price: {{board.price}} </p>
+    </li>
+  </ul>
+
+
+<form ng-submit="mainCtrl.addSnowboard(newBoard)">
+  <input type="url" ng-model="newBoard.photo" placeholder = "Photo">
+  <input type="text" ng-model="newBoard.board" placeholder="Board Name">
+  <input type="text" ng-model="newBoard.price" placeholder="Price">
+  <button type="submit">Add Snowboard</button>
+</form>
+<button ng-click="mainCtrl.alertMe()">Good Job Rachel!</button>

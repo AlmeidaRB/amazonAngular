@@ -1,0 +1,40 @@
+<div ng-controller = "SnowController" class="snowPage">
+  <ul>
+    <li ng-repeat="board in mainCtrl.snowboards">
+      <a href=""><img ng-src="{{ board.photo}}" alt=""></a>
+      <p>Brand: {{board.board}}</p>
+      <p>Price: {{board.price}}</p>
+      <p><input type="checkbox" name="buy" value="unit-in-cart"/> Add to Cart</p>
+    </li>
+  </ul>
+</div>
+
+<div ng-controller = "SurfController" class = "surfPage">
+  <ul>
+    <li ng-repeat="surf in mainCtrl.surfboards">
+      <a href=""><img ng-src="{{ surf.photo}}" alt=""></a>
+      <p>Brand: {{surf.surf}}</p>
+      <p>Price: {{surf.price}}</p>
+      <p><input type="checkbox" name="buy" value="unit-in-cart"/> Add to Cart</p>
+    </li>
+  </ul>
+</div>
+
+<div ng-controller = "SneaksController" class = "sneaksPage">
+  <ul>
+    <li ng-repeat="shoe in mainCtrl.sneakers">
+      <a href=""><img ng-src="{{ shoe.photo}}" alt=""></a>
+      <p>Brand: {{shoe.shoe}}</p>
+      <p>Price: {{shoe.price}}</p>
+      <p><input type="checkbox" name="buy" value="unit-in-cart"/> Add to Cart</p>
+    </li>
+  </ul>
+</div>
+
+
+<form ng-submit="mainCtrl.addSnowboard(newBoard)">
+  <input type="url" ng-model="newBoard.photo" placeholder = "Photo">
+  <input type="text" ng-model="newBoard.board" placeholder="Board Name">
+  <input type="text" ng-model="newBoard.price" placeholder="Price">
+  <button type="submit">Add Snowboard</button>
+</form>
