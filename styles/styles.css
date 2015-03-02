@@ -73,6 +73,18 @@ hr {
   margin: 0px;
   padding: 0px; }
 
+.homePage h1 {
+  font-size: 20px;
+  margin: 10px;
+  display: inline; }
+
+.homePage h2 {
+  font-size: 15px;
+  display: inline; }
+
+.homePage img {
+  margin: 30px; }
+
 ul {
   list-style-type: none;
   display: inline-block;
@@ -103,5 +115,63 @@ p {
   font-size: 20px;
   margin: 0px;
   padding: 0px; }
+
+.footer {
+  width: 100%;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.footer img {
+  width: 160px;
+  height: 20px;
+  margin-top: 20px; }
+
+.footer ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  display: block; }
+
+.footer li {
+  display: inline-block;
+  padding: 0px;
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 15px;
+  margin-bottom: 0px; }
+
+.footer li a {
+  text-decoration: none;
+  color: black; }
+
+.footer li a:hover {
+  text-decoration: underline; }
+
+.shoppingcart {
+  display: inline-block;
+  width: 18%;
+  text-align: right;
+  margin: 0px;
+  padding: 0px; }
+
+.shoppingcart ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px; }
+
+.shoppingcart li {
+  display: inline-block;
+  margin: 0px; }
+
+.shoppingcart li a {
+  text-decoration: none;
+  padding-right: 10px;
+  color: black; }
+
+.shoppingcart li a:hover {
+  text-decoration: underline; }
 
 /*# sourceMappingURL=styles.css.map */
