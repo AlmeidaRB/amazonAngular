@@ -73,6 +73,11 @@ hr {
   margin: 0px;
   padding: 0px; }
 
+.homePage img {
+  margin: 10px;
+  padding: 20px;
+  border-right: 2px solid lightgray; }
+
 .homePage h1 {
   font-size: 20px;
   margin: 10px;
@@ -81,9 +86,6 @@ hr {
 .homePage h2 {
   font-size: 15px;
   display: inline; }
-
-.homePage img {
-  margin: 30px; }
 
 ul {
   list-style-type: none;
