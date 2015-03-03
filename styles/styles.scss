@@ -13,6 +13,7 @@ body.ng-scope {
   color: black;
   margin: 0px;
   padding: 0px;
+  height: 45px;
 }
 .topnav img  {
   width: 160px;
@@ -78,7 +79,7 @@ hr {
   width: 100%;
 }
 .fixedTop hr {
-  border: 1px solid black;
+  border: 1px dotted darkgray;
 }
 .homePage .header img {
   width: 100%;
