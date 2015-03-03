@@ -9,6 +9,7 @@
 </head>
 <body ng-app="amazonApp">
   <!--top navbar section-->
+  <div class="fixedTop">
     <div class="topnav">
       <ul>
         <li><a href="#/"><img src="styles/images/logo.png" alt=""></a></li>
@@ -17,15 +18,17 @@
         <li><a href="#/sneaks">Sneaks</a></li>
       </ul>
     </div>
-
     <div class="shoppingcart">
       <ul>
         <li><a href=""><i class="fa fa-shopping-cart"></i> Shopping Cart</a></li>
       </ul>
     </div>
+    <hr>
+  </div>
 
     <hr>
   <!--end top navbar section-->
+
 <ng-view></ng-view>
 
   <!--footer-->
@@ -45,7 +48,7 @@
       </ul>
       <ul>
         <li><a href="">Check your Cart <i class="fa fa-shopping-cart"></i></a></li>
-        <li>Login as an Administrator <button ng-click>Login</button></li>
+        <div ng-controller="AdminController as adminCtrl"><li><input type="password" ng-model="username"> <button ng-click="adminCtrl.login(username)">Admin Login</button></li></div>
       </ul>
 
 

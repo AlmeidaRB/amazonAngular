@@ -21,6 +21,10 @@
         templateUrl: 'views/main.html',
         controller: 'SneaksController as mainCtrl'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminController as adminCtrl'
+      })
       .when('/not-found', {
         templateUrl: 'views/404.html'
       })
@@ -28,6 +32,7 @@
         redirectTo: '/not-found'
       });
   });
+
 
 
 
