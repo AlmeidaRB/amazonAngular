@@ -13,17 +13,18 @@
     <div class="topnav">
       <ul>
         <li><a href="#/"><img src="styles/images/logo.png" alt=""></a></li>
-        <li><a href="#/snow">Snow</a></li>
-        <li><a href="#/surf">Surf</a></li>
-        <li><a href="#/sneaks">Sneaks</a></li>
+        <li><a href="#/snow">Snowboards</a></li>
+        <li><a href="#/surf">Surfboards</a></li>
+        <li><a href="#/sneaks">Skis</a></li>
+        <h3>Water & Snow Sporting Goods</h3>
+
       </ul>
     </div>
     <div class="shoppingcart">
       <ul>
-        <li><a href=""><i class="fa fa-shopping-cart"></i> Shopping Cart</a></li>
+        <li><a href="#/cart"><i class="fa fa-shopping-cart"></i> Shopping Cart</a></li>
       </ul>
     </div>
-    <hr>
   </div>
 
     <hr>
@@ -36,9 +37,9 @@
       <hr>
       <a href="#/"><img src="styles/images/logo.png" alt=""></a>
       <ul>
-        <li><a href="#/snow">Snow</a></li>
-        <li><a href="#/surf">Surf</a></li>
-        <li><a href="#/sneaks">Sneaks</a></li>
+        <li><a href="#/snow">Snowboards</a></li>
+        <li><a href="#/surf">Surfboards</a></li>
+        <li><a href="#/sneaks">Skis</a></li>
       </ul>
       <ul>
         <li>Contact Champazon:</li>
@@ -47,8 +48,10 @@
         <li>Email: <a href="mailto:hr@champazon.com">hr@champazon.com</a></li>
       </ul>
       <ul>
-        <li><a href="">Check your Cart <i class="fa fa-shopping-cart"></i></a></li>
-        <div ng-controller="AdminController as adminCtrl"><li><input type="password" ng-model="username"> <button ng-click="adminCtrl.login(username)">Admin Login</button></li></div>
+        <li><a href="#/cart">Check your Cart <i class="fa fa-shopping-cart"></i></a></li>
+        <div class="login">
+          <div ng-controller="AdminController as adminCtrl"><li><input type="password" ng-model="username"> <button ng-click="adminCtrl.login(username)">Admin Login</button></li></div>
+        </div>
       </ul>
 
 

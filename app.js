@@ -10,16 +10,24 @@
         templateUrl: 'views/home.html',
       })
       .when('/snow', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/snow.html',
         controller: 'SnowController as mainCtrl'
       })
       .when('/surf', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/surf.html',
         controller: 'SurfController as mainCtrl'
       })
       .when('/sneaks', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/sneaks.html',
         controller: 'SneaksController as mainCtrl'
+      })
+      .when('/cart', {
+        templateUrl: 'views/cart.html',
+        controller: 'SnowController as mainCtrl'
+      })
+      .when('/cart', {
+        templateUrl: 'views/cart.html',
+        controller: 'SurfController as mainCtrl'
       })
       .when('/admin', {
         templateUrl: 'views/admin.html',

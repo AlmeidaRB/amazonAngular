@@ -1,16 +1,22 @@
 (function () {
   "use strict";
+
 //snow
   angular.module('amazonApp')
-    .controller('SnowController', function (SnowboardsService, $scope) {
+    .controller('SnowController', function (SnowboardsService, $scope, $location) {
         var mainCtrl = this;
 
         mainCtrl.snowboards = SnowboardsService.getBoards();
+        mainCtrl.Shoppingcart = SnowboardsService.getShoppingcart();
 
         mainCtrl.addSnowboard = function (newBoard) {
           SnowboardsService.addBoard(newBoard);
           $scope.newBoard = {};
         };
+        mainCtrl.addCart = function (cartItem) {
+          SnowboardsService.addCart(cartItem);
+          $location.path('/cart');
+        }
 
     });
 
@@ -50,7 +56,7 @@ angular.module('amazonApp')
     var adminCtrl = this;
 
     adminCtrl.snowboards = SnowboardsService.getBoards();
-    adminCtrl.addSnowboard = function (newSurf) {
+    adminCtrl.addSnowboard = function (newBoard) {
       SnowboardsService.addBoard(newBoard);
       $scope.newBoard = {};
     };
@@ -73,6 +79,19 @@ angular.module('amazonApp')
         alert("Incorrect admin username, please try again.");
       }
     };
+    adminCtrl.deleteBoard = function(board) {
+      SnowboardsService.deleteBoard(board);
+    };
+    adminCtrl.deleteSurf = function(surf) {
+      SurfboardsService.deleteSurf(surf);
+    };
+    adminCtrl.deleteShoe = function(shoe) {
+      SneakersService.deleteShoe(shoe);
+    };
+    adminCtrl.editBoard = function(board) {
+      SnowboardsService.editBoard(board);
+    };
+
 
   });
 

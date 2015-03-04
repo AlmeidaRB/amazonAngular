@@ -95,16 +95,37 @@
         }
       ];
 
+      var Shoppingcart = [];
+
+      var getCart = function() {
+        return Shoppingcart;
+      };
+      var addCart = function(cartItem) {
+        Shoppingcart.push(cartItem);
+      };
       var getSnowboards = function () {
         return snowboards;
       };
       var addSnowboard = function (board) {
         snowboards.push(board);
       }
+      var deleteSnowboard = function (board) {
+        var idx = snowboards.indexOf(board);
+        snowboards.splice(idx, 1);
+        console.log(snowboards);
+      };
+      var editSnowboard = function (board) {
+        SnowboardsService.editBoard(board, $routeParams.boardIndex);
+        $location.path('' + $routeParams.boardIndex);
+      };
 
       return {
         getBoards: getSnowboards,
-        addBoard: addSnowboard
+        addBoard: addSnowboard,
+        deleteBoard: deleteSnowboard,
+        editBoard: editSnowboard,
+        getShoppingcart: getCart,
+        addCart: addCart
       };
     });
 
@@ -115,7 +136,7 @@
         var surfboards = [
         {
           photo: "../styles/images/surf1.jpg",
-          surf: "NKB Quest",
+          surf: "Chilli",
           price: "700"
         },
         {
@@ -135,7 +156,7 @@
         },
         {
           photo: "../styles/images/surf1.jpg",
-          surf: "NKB Quest",
+          surf: "Chilli",
           price: "700"
         },
         {
@@ -155,7 +176,7 @@
         },
         {
           photo: "../styles/images/surf1.jpg",
-          surf: "NKB Quest",
+          surf: "Chilli",
           price: "700"
         },
         {
@@ -175,7 +196,7 @@
         },
         {
           photo: "../styles/images/surf1.jpg",
-          surf: "NKB Quest",
+          surf: "Chilli",
           price: "700"
         },
         {
@@ -195,7 +216,7 @@
         },
         {
           photo: "../styles/images/surf1.jpg",
-          surf: "NKB Quest",
+          surf: "Chilli",
           price: "700"
         },
         {
@@ -211,10 +232,17 @@
       var addSurfboard = function (surf) {
         surfboards.push(surf);
       }
+      var deleteSurfboard = function (surf) {
+        var idx = surfboards.indexOf(surf);
+        surfboards.splice(idx, 1);
+        console.log(surfboards);
+      };
 
       return {
         getSurfs: getSurfboards,
-        addSurf: addSurfboard
+        addSurf: addSurfboard,
+        deleteSurf: deleteSurfboard
+
       };
     });
 
@@ -224,94 +252,94 @@ angular.module('amazonApp')
   .factory('SneakersService', function () {
     var sneakers = [
     {
-      photo: "../styles/images/sneaks1.jpg",
-      shoe: "Brooks",
-      price: "80"
+      photo: "../styles/images/ski1.jpg",
+      shoe: "4FRNT",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks2.jpg",
-      shoe: "Nike",
-      price: "70"
+      photo: "../styles/images/ski2.jpg",
+      shoe: "Atomic",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks3.jpg",
-      shoe: "Merrils",
-      price: "80"
+      photo: "../styles/images/ski3.jpg",
+      shoe: "Salomon",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks4.jpg",
-      shoe: "Teneya",
-      price: "70"
+      photo: "../styles/images/ski4.jpg",
+      shoe: "K2",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks1.jpg",
-      shoe: "Brooks",
-      price: "80"
+      photo: "../styles/images/ski1.jpg",
+      shoe: "4FRNT",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks2.jpg",
-      shoe: "Nike",
-      price: "70"
+      photo: "../styles/images/ski2.jpg",
+      shoe: "Atomic",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks3.jpg",
-      shoe: "Merrils",
-      price: "80"
+      photo: "../styles/images/ski3.jpg",
+      shoe: "Salomon",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks4.jpg",
-      shoe: "Teneya",
-      price: "70"
+      photo: "../styles/images/ski4.jpg",
+      shoe: "K2",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks1.jpg",
-      shoe: "Brooks",
-      price: "80"
+      photo: "../styles/images/ski1.jpg",
+      shoe: "4FRNT",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks2.jpg",
-      shoe: "Nike",
-      price: "70"
+      photo: "../styles/images/ski2.jpg",
+      shoe: "Atomic",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks3.jpg",
-      shoe: "Merrils",
-      price: "80"
+      photo: "../styles/images/ski3.jpg",
+      shoe: "Salomon",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks4.jpg",
-      shoe: "Teneya",
-      price: "70"
+      photo: "../styles/images/ski4.jpg",
+      shoe: "K2",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks1.jpg",
-      shoe: "Brooks",
-      price: "80"
+      photo: "../styles/images/ski1.jpg",
+      shoe: "4FRNT",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks2.jpg",
-      shoe: "Nike",
-      price: "70"
+      photo: "../styles/images/ski2.jpg",
+      shoe: "Atomic",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks3.jpg",
-      shoe: "Merrils",
-      price: "80"
+      photo: "../styles/images/ski3.jpg",
+      shoe: "Salomon",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks4.jpg",
-      shoe: "Teneya",
-      price: "70"
+      photo: "../styles/images/ski4.jpg",
+      shoe: "K2",
+      price: "300"
     },
     {
-      photo: "../styles/images/sneaks3.jpg",
-      shoe: "Merrils",
-      price: "80"
+      photo: "../styles/images/ski1.jpg",
+      shoe: "4FRNT",
+      price: "200"
     },
     {
-      photo: "../styles/images/sneaks4.jpg",
-      shoe: "Teneya",
-      price: "70"
+      photo: "../styles/images/ski2.jpg",
+      shoe: "Atomic",
+      price: "300"
     }
   ];
 
@@ -321,10 +349,17 @@ angular.module('amazonApp')
   var addSneaker = function (shoe) {
     sneakers.push(shoe);
   }
+  var deleteSneaker = function (shoe) {
+    var idx = sneakers.indexOf(shoe);
+    sneakers.splice(idx, 1);
+    console.log(sneakers);
+  };
 
   return {
     getShoes: getSneakers,
-    addShoe: addSneaker
+    addShoe: addSneaker,
+    deleteShoe: deleteSneaker
+
   };
 });
 
