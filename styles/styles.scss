@@ -74,7 +74,7 @@ h3 {
 }
 hr {
   width: 100%;
-  border: 1px solid lightgray;
+  border: 1px solid gray;
   margin: 0px;
 }
 //end top nav
@@ -88,7 +88,7 @@ hr {
   opacity: .8;
 }
 .fixedTop {
-  border-bottom: 1px dotted black;
+  border-bottom: 2px dotted black;
 }
 .homePage .header img {
   width: 100%;
@@ -106,7 +106,7 @@ hr {
 .homePage img {
   margin: 10px;
   padding: 20px;
-  border-right: 2px solid lightgray;
+  border-right: 2px solid gray;
 }
 .homePage h1 {
   font-size: 20px;
@@ -144,7 +144,21 @@ p {
   margin-left: 0px;
   text-align: center;
 }
-
+a {
+  text-align: center;
+}
+.buttons2 {
+  text-align: center;
+}
+.item {
+  border-right: 2px solid gray;
+}
+.arrowBack {
+  margin-top: 75px;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
 //Surf Page
 .surfpage ul {
   margin: 0px;
@@ -223,10 +237,48 @@ p {
 h1 {
   margin-top: 60px;
   margin-bottom: -50px;
+  font-size: 25px;
 }
 button {
   text-align: center;
 }
+.addProduct {
+  margin-left: 50%;
+}
 form {
   margin-bottom: 20px;
+  display: inline-block;
+}
+.productForm {
+  width: 300px;
+  border: 2px solid gray;
+  margin: 20px;
+  padding: 10px;
+}
+.productForm input {
+  width: 290px;
+}
+.productForm textarea {
+  width: 290px;
+  height: 50px;
+}
+.productForm h3 {
+  text-align: center;
+  font-size: 16px;
+}
+//cart feature
+.cartHeader h2 {
+  margin: 20px;
+  font-size: 18px;
+}
+.itemQuantity input {
+  width: 25px;
+}
+.cartContainer ul {
+  margin: 0px;
+  padding: 0px;
+}
+//error page
+h2 {
+  margin: 20px;
 }

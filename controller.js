@@ -1,98 +1,85 @@
 (function () {
   "use strict";
 
-//snow
-  angular.module('amazonApp')
-    .controller('SnowController', function (SnowboardsService, $scope, $location) {
-        var mainCtrl = this;
+// user controller
+  angular.module('champazon')
+    .controller('MainController', function (StoreService, $rootScope, $scope, $routeParams, $location) {
+      var mainCtrl = this;
 
-        mainCtrl.snowboards = SnowboardsService.getBoards();
-        mainCtrl.Shoppingcart = SnowboardsService.getShoppingcart();
+      StoreService.getItems().success(function(data) {
+        mainCtrl.items = data;
+      });
 
-        mainCtrl.addSnowboard = function (newBoard) {
-          SnowboardsService.addBoard(newBoard);
-          $scope.newBoard = {};
+      StoreService.getItem($routeParams.itemIndex).success(function(data) {
+        mainCtrl.singleItem = data;
+      });
+
+      mainCtrl.currentIndex = $routeParams.itemIndex;
+
+  // shopping cart
+        mainCtrl.cart = StoreService.getCartItems();
+        mainCtrl.total = StoreService.total();
+
+        mainCtrl.addToCart = function(item) {
+          StoreService.addToCart(item);
+          $location.path('/user/cart');
         };
-        mainCtrl.addCart = function (cartItem) {
-          SnowboardsService.addCart(cartItem);
-          $location.path('/cart');
+
+        mainCtrl.deleteFromCart = function(item) {
+          StoreService.deleteFromCart(item);
+        };
+
+        mainCtrl.addReview = function (item, review) {
+          StoreService.addReview(item, review);
+          $scope.review = {};
+        };
+
+      });
+
+})();
+
+//admin controller
+
+(function() {
+  "use strict";
+  angular.module('champazon')
+    .controller('AdminController', function (StoreService, $rootScope, $scope, $routeParams, $location) {
+
+      var adminCtrl = this;  //alias for AdminController
+
+      StoreService.getItems().success(function(data) {
+        adminCtrl.items = data;
+      });
+
+      StoreService.getItem($routeParams.itemIndex).success(function(data) {
+        adminCtrl.singleItem = data;
+      });
+
+      adminCtrl.currentIndex = $routeParams.itemIndex;
+
+      //login feature//
+      adminCtrl.login = function (username) {
+        if(username === 'rach') {
+          $location.path('/admin/listView');
+        } else {
+          alert("Incorrect admin username, please try again.");
         }
+      };
+
+      adminCtrl.addProduct = function (newItem) {
+        StoreService.addItem(newItem);
+        $location.path('/admin/listView');
+
+      };
+
+      adminCtrl.deleteProduct = function (id) {
+        StoreService.deleteItem(id);
+      };
+
+      adminCtrl.editProduct = function (item) {
+        StoreService.editItem(item, $routeParams.itemIndex);
+        $location.path('/admin/listView');
+      };
 
     });
-
-//surf
-angular.module('amazonApp')
-.controller('SurfController', function (SurfboardsService, $scope) {
-    var mainCtrl = this;
-
-    mainCtrl.surfboards = SurfboardsService.getSurfs();
-
-
-    mainCtrl.addSurfboard = function (newSurf) {
-      SurfboardsService.addSurf(newSurf);
-      $scope.newSurf = {};
-    };
-
-});
-
-//sneaks
-angular.module('amazonApp')
-.controller('SneaksController', function (SneakersService, $scope) {
-    var mainCtrl = this;
-
-    mainCtrl.sneakers = SneakersService.getShoes();
-
-
-    mainCtrl.addSneaker = function (newShoe) {
-      SneakersService.addShoe(newShoe);
-      $scope.newShoe = {};
-    };
-
-});
-
-//admin
-angular.module('amazonApp')
-.controller('AdminController', function (SnowboardsService, SurfboardsService, SneakersService, $location, $scope) {
-    var adminCtrl = this;
-
-    adminCtrl.snowboards = SnowboardsService.getBoards();
-    adminCtrl.addSnowboard = function (newBoard) {
-      SnowboardsService.addBoard(newBoard);
-      $scope.newBoard = {};
-    };
-    adminCtrl.surfboards = SurfboardsService.getSurfs();
-    adminCtrl.addSurfboard = function (newSurf) {
-      SurfboardsService.addSurf(newSurf);
-      $scope.newSurf = {};
-    };
-    adminCtrl.sneakers = SneakersService.getShoes();
-    adminCtrl.addSneaker = function (newShoe) {
-      SneakersService.addShoe(newShoe);
-      $scope.newShoe = {};
-    };
-
-    adminCtrl.login = function (username) {
-      if(username === 'rachAdmin') {
-        $location.path('/admin');
-        alert("Welcome Administrator!");
-      } else {
-        alert("Incorrect admin username, please try again.");
-      }
-    };
-    adminCtrl.deleteBoard = function(board) {
-      SnowboardsService.deleteBoard(board);
-    };
-    adminCtrl.deleteSurf = function(surf) {
-      SurfboardsService.deleteSurf(surf);
-    };
-    adminCtrl.deleteShoe = function(shoe) {
-      SneakersService.deleteShoe(shoe);
-    };
-    adminCtrl.editBoard = function(board) {
-      SnowboardsService.editBoard(board);
-    };
-
-
-  });
-
 })();

@@ -1,366 +1,90 @@
 (function () {
-  "use strict";
-  angular.module('amazonApp')
-    .factory('SnowboardsService', function () {
-      var snowboards = [
-        {
-          photo: "../styles/images/ride.jpg",
-          board: "Ride",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/burton.jpg",
-          board: "Burton",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/libtech.jpg",
-          board: "Lib Tech",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/forum.jpg",
-          board: "Forum",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/ride.jpg",
-          board: "Ride",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/burton.jpg",
-          board: "Burton",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/libtech.jpg",
-          board: "Lib Tech",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/forum.jpg",
-          board: "Forum",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/ride.jpg",
-          board: "Ride",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/burton.jpg",
-          board: "Burton",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/libtech.jpg",
-          board: "Lib Tech",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/forum.jpg",
-          board: "Forum",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/libtech.jpg",
-          board: "Lib Tech",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/forum.jpg",
-          board: "Forum",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/ride.jpg",
-          board: "Ride",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/burton.jpg",
-          board: "Burton",
-          price: "500"
-        },
-        {
-          photo: "../styles/images/libtech.jpg",
-          board: "Lib Tech",
-          price: "400"
-        },
-        {
-          photo: "../styles/images/forum.jpg",
-          board: "Forum",
-          price: "500"
-        }
-      ];
+"use strict";
 
-      var Shoppingcart = [];
+angular.module('champazon')
+  .factory('StoreService', function ($http, $rootScope) {
 
-      var getCart = function() {
-        return Shoppingcart;
-      };
-      var addCart = function(cartItem) {
-        Shoppingcart.push(cartItem);
-      };
-      var getSnowboards = function () {
-        return snowboards;
-      };
-      var addSnowboard = function (board) {
-        snowboards.push(board);
+    var url = 'http://tiy-fee-rest.herokuapp.com/collections/champazon2';
+
+// Functions for the Admin
+// Functions for the Admin
+// Functions for the Admin
+
+    var getProducts = function () {
+      return $http.get(url);
+    };
+    var getSingleItem = function (id) {  // was (index)
+      return $http.get(url + '/' +id);
+    };
+    var addProduct = function (item) {
+      item.reviews = [];
+      $http.post(url, item);
+      $rootScope.$broadcast('item:created')
+    };
+    var deleteProduct = function (id) {   //was (item)
+      $http.delete(url + '/' + id);
+      $rootScope.$broadcast('item:deleted');
+    };
+    var editProduct = function (item, id) {  //was (item, index)
+      $http.put(url + '/' + id, item);
+      $rootScope.$broadcast('item:updated');
+    };
+
+// Functions for the User
+// Functions for the User
+// Functions for the User
+
+    var addReview = function (item, review) {
+      review = {
+        stars: 0,
+        body: '',
+        author: ''
       }
-      var deleteSnowboard = function (board) {
-        var idx = snowboards.indexOf(board);
-        snowboards.splice(idx, 1);
-        console.log(snowboards);
-      };
-      var editSnowboard = function (board) {
-        SnowboardsService.editBoard(board, $routeParams.boardIndex);
-        $location.path('' + $routeParams.boardIndex);
-      };
+      item.reviews.push(review);
+      $http.put(url + '/' + item._id, item);
+    };
 
-      return {
-        getBoards: getSnowboards,
-        addBoard: addSnowboard,
-        deleteBoard: deleteSnowboard,
-        editBoard: editSnowboard,
-        getShoppingcart: getCart,
-        addCart: addCart
-      };
-    });
+//Functions for the Cart
+//Functions for the Cart
+//Functions for the Cart
 
-//surf
+    var cart = [];  
 
-    angular.module('amazonApp')
-      .factory('SurfboardsService', function () {
-        var surfboards = [
-        {
-          photo: "../styles/images/surf1.jpg",
-          surf: "Chilli",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf2.jpg",
-          surf: "Channel Island",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf3.jpg",
-          surf: "Lost",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf4.jpg",
-          surf: "Rusty",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf1.jpg",
-          surf: "Chilli",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf2.jpg",
-          surf: "Channel Island",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf3.jpg",
-          surf: "Lost",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf4.jpg",
-          surf: "Rusty",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf1.jpg",
-          surf: "Chilli",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf2.jpg",
-          surf: "Channel Island",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf3.jpg",
-          surf: "Lost",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf4.jpg",
-          surf: "Rusty",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf1.jpg",
-          surf: "Chilli",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf2.jpg",
-          surf: "Channel Island",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf3.jpg",
-          surf: "Lost",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf4.jpg",
-          surf: "Rusty",
-          price: "600"
-        },
-        {
-          photo: "../styles/images/surf1.jpg",
-          surf: "Chilli",
-          price: "700"
-        },
-        {
-          photo: "../styles/images/surf2.jpg",
-          surf: "Channel Island",
-          price: "600"
-        }
-      ];
+    var addToCart = function (item) {
+      cart.push(item);
+    };
 
-      var getSurfboards = function () {
-        return surfboards;
-      };
-      var addSurfboard = function (surf) {
-        surfboards.push(surf);
-      }
-      var deleteSurfboard = function (surf) {
-        var idx = surfboards.indexOf(surf);
-        surfboards.splice(idx, 1);
-        console.log(surfboards);
-      };
+    var getCartProducts = function () {
+      return cart;
+    };
 
-      return {
-        getSurfs: getSurfboards,
-        addSurf: addSurfboard,
-        deleteSurf: deleteSurfboard
+    var deleteCartProducts = function (item) {
+      var idx = cart.indexOf(item);
+      cart.splice(idx,1);
+    };
 
-      };
-    });
+    var total = function() {
+      var total = 0;
+      angular.forEach(cart, function(item) {
+      total += item.quant * item.price;
+      })
+      return total;
+    };
 
-//sneaks
+    return {
+      getItems: getProducts,
+      getItem: getSingleItem,
+      addItem: addProduct,
+      deleteItem: deleteProduct,
+      editItem: editProduct,
+      addReview: addReview,
 
-angular.module('amazonApp')
-  .factory('SneakersService', function () {
-    var sneakers = [
-    {
-      photo: "../styles/images/ski1.jpg",
-      shoe: "4FRNT",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski2.jpg",
-      shoe: "Atomic",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski3.jpg",
-      shoe: "Salomon",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski4.jpg",
-      shoe: "K2",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski1.jpg",
-      shoe: "4FRNT",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski2.jpg",
-      shoe: "Atomic",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski3.jpg",
-      shoe: "Salomon",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski4.jpg",
-      shoe: "K2",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski1.jpg",
-      shoe: "4FRNT",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski2.jpg",
-      shoe: "Atomic",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski3.jpg",
-      shoe: "Salomon",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski4.jpg",
-      shoe: "K2",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski1.jpg",
-      shoe: "4FRNT",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski2.jpg",
-      shoe: "Atomic",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski3.jpg",
-      shoe: "Salomon",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski4.jpg",
-      shoe: "K2",
-      price: "300"
-    },
-    {
-      photo: "../styles/images/ski1.jpg",
-      shoe: "4FRNT",
-      price: "200"
-    },
-    {
-      photo: "../styles/images/ski2.jpg",
-      shoe: "Atomic",
-      price: "300"
-    }
-  ];
+      addToCart: addToCart,
+      getCartItems: getCartProducts,
+      deleteFromCart: deleteCartProducts,
+      total: total
+    };
 
-  var getSneakers = function () {
-    return sneakers;
-  };
-  var addSneaker = function (shoe) {
-    sneakers.push(shoe);
-  }
-  var deleteSneaker = function (shoe) {
-    var idx = sneakers.indexOf(shoe);
-    sneakers.splice(idx, 1);
-    console.log(sneakers);
-  };
-
-  return {
-    getShoes: getSneakers,
-    addShoe: addSneaker,
-    deleteShoe: deleteSneaker
-
-  };
-});
+  });
 
 })();

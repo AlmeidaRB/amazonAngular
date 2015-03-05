@@ -1,52 +1,45 @@
 (function () {
   "use strict";
-
-  angular.module('amazonApp', [
-    'ngRoute'
+  angular.module('champazon', [
+  'ngRoute'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider) {   //configuring routing
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html',
+        templateUrl: 'views/main.html',
+        controller: 'MainController as mainCtrl'
       })
-      .when('/snow', {
-        templateUrl: 'views/snow.html',
-        controller: 'SnowController as mainCtrl'
-      })
-      .when('/surf', {
-        templateUrl: 'views/surf.html',
-        controller: 'SurfController as mainCtrl'
-      })
-      .when('/sneaks', {
-        templateUrl: 'views/sneaks.html',
-        controller: 'SneaksController as mainCtrl'
-      })
-      .when('/cart', {
-        templateUrl: 'views/cart.html',
-        controller: 'SnowController as mainCtrl'
-      })
-      .when('/cart', {
-        templateUrl: 'views/cart.html',
-        controller: 'SurfController as mainCtrl'
-      })
-      .when('/admin', {
-        templateUrl: 'views/admin.html',
+      .when('/admin/editproduct/:itemIndex', {
+        templateUrl:'views/admin/editItem.html',
         controller: 'AdminController as adminCtrl'
       })
+      .when('/admin/listView', {
+        templateUrl: 'views/admin/listView.html',
+        controller: 'AdminController as adminCtrl'
+      })
+      .when('/admin/addproduct', {
+      templateUrl: 'views/admin/addNewItem.html',
+      controller: 'AdminController as adminCtrl'
+      })
+      .when('/user/listView', {
+        templateUrl: 'views/user/listView.html',
+        controller: 'MainController as mainCtrl'
+      })
+      .when('/user/cart', {
+        templateUrl: 'views/user/shoppingCart.html',
+        controller: 'MainController as mainCtrl'
+      })
+      .when('/user/detail/:itemIndex', {
+        templateUrl: 'views/user/detailView.html',
+        controller: 'MainController as mainCtrl'
+      })
       .when('/not-found', {
-        templateUrl: 'views/404.html'
+        templateUrl: 'views/not-found.html'
       })
       .otherwise({
-        redirectTo: '/not-found'
+        redirectTo:'/not-found'
       });
+
   });
 
-
-
-
-})();
-
-
-// IIFE - Immediately Invoked Function Execution
-
-// (function() {})();
+}) ();
