@@ -1,0 +1,31 @@
+<div class="homePage">
+<div class="header">
+<img src="styles/images/header.jpg" alt="">
+</div>
+
+<!--Surf Controller-->
+
+<div ng-controller = "SurfController as surfCtrl" class = "surfPage">
+  <ul>
+    <li ng-repeat="surf in surfCtrl.surfboards">
+      <a href=""><img ng-src="{{ surf.photo}}" alt=""></a>
+      <p>Brand: {{surf.surf}}</p>
+      <p>Price: {{surf.price | currency}}</p>
+      <p><button ng-click="mainCtrl.addCart(board)">Add to Cart</button></p>
+    </li>
+  </ul>
+</div>
+
+<!--Snow Controller-->
+<div ng-controller = "SnowController as snowCtrl" class="snowPage">
+  <ul>
+    <li ng-repeat="board in snowCtrl.snowboards">
+      <a href=""><img ng-src="{{ board.photo}}" alt=""></a>
+      <p>Brand: {{board.board}}</p>
+      <p>Price: {{board.price | currency}}</p>
+      <p><button ng-click="mainCtrl.addCart(board)">Add to Cart</button></p>
+    </li>
+  </ul>
+</div>
+
+</div>

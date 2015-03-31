@@ -48,7 +48,7 @@ angular.module('champazon')
 //Functions for the Cart
 //Functions for the Cart
 
-    var cart = [];  
+    var cart = [];
 
     var addToCart = function (item) {
       cart.push(item);
